@@ -1,5 +1,8 @@
 # Changelog for ImpassableFurniture
 
+1.0.3.0 - Now ignores all things from SOS2 as it caused issues with the pathfinding and air
+
+
 1.0.2.0 - Mod updated for 1.3 and passed autotests
 
 

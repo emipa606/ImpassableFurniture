@@ -12,21 +12,24 @@ namespace ImpassableFurniture
         static ImpassableFurniture()
         {
             ImpassableFurnitureMod.instance.defaultList = (from td in DefDatabase<ThingDef>.AllDefsListForReading
-                where td.building != null && td.passability == Traversability.Impassable
+                where td.building != null && td.passability == Traversability.Impassable &&
+                      td.modContentPack?.PackageId != "kentington.saveourship2"
                 select td).ToList();
 
             if (ImpassableFurnitureMod.instance.Settings.enabledDefList.NullOrEmpty())
             {
                 ImpassableFurnitureMod.instance.Settings.enabledDefList =
                     (from td in DefDatabase<ThingDef>.AllDefsListForReading
-                        where td.building != null && td.passability == Traversability.Impassable
+                        where td.building != null && td.passability == Traversability.Impassable &&
+                              td.modContentPack?.PackageId != "kentington.saveourship2"
                         select td).ToList();
                 return;
             }
 
             DefDatabase<ThingDef>.AllDefsListForReading.ForEach(delegate(ThingDef td)
             {
-                if (td.building != null && td.passability == Traversability.Impassable)
+                if (td.building != null && td.passability == Traversability.Impassable &&
+                    td.modContentPack?.PackageId != "kentington.saveourship2")
                 {
                     RemovePassability(td);
                 }

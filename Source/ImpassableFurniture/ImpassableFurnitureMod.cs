@@ -71,7 +71,7 @@ namespace ImpassableFurniture
                 where td.building != null && !td.label.Contains("(building)") &&
                       td.passability != Traversability.Impassable &&
                       (td.defName.Contains(searchTerm) || td.label.Contains(searchTerm)) &&
-                      !Settings.enabledDefList.Contains(td)
+                      !Settings.enabledDefList.Contains(td) && td.modContentPack?.PackageId != "kentington.saveourship2"
                 orderby td.LabelCap.RawText ?? td.defName
                 select td).ToList();
             var num = 3f;

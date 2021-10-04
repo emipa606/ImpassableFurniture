@@ -29,7 +29,7 @@ namespace ImpassableFurniture
             var source = list2 ?? new List<string>();
             Scribe_Collections.Look(ref source, "enabledDefList");
             enabledDefList = (from td in source.Select(DefDatabase<ThingDef>.GetNamedSilentFail)
-                where td != null
+                where td != null && td.modContentPack?.PackageId != "kentington.saveourship2"
                 select td).ToList();
         }
     }

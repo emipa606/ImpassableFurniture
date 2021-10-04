@@ -1,25 +1,16 @@
 # ImpassableFurniture
 
-![Image](https://i.imgur.com/WAEzk68.png)
+![Image](https://i.imgur.com/buuPQel.png)
 
 Update of erdelfs mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=1290242475
 
-- Added &quot;Add all&quot;, &quot;Remove all&quot; and &quot;Reset to default&quot; buttons in the settings
+- Added "Add all", "Remove all" and "Reset to default" buttons in the settings
 
-![Image](https://i.imgur.com/7Gzt3Rg.png)
+![Image](https://i.imgur.com/pufA0kM.png)
 
-
-[table]
-	[tr]
-		[td]https://invite.gg/Mlie]![Image](https://i.imgur.com/zdzzBrc.png)
-[/td]
-		[td]https://github.com/emipa606/ImpassableFurniture]![Image](https://i.imgur.com/kTkpTOE.png)
-[/td]
-	[/tr]
-[/table]
 	
-![Image](https://i.imgur.com/NOW7jU1.png)
+![Image](https://i.imgur.com/Z4GOv8H.png)
 
 
 You want to make buildings impassable ? Well then you came to the right place 
@@ -36,7 +27,7 @@ This will make them impassable for you as well as your enemies.
 Preview: Allet
 
 
-![Image](https://i.imgur.com/Rs6T6cr.png)
+![Image](https://i.imgur.com/PwoNOj4.png)
 
 
 
