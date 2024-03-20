@@ -31,8 +31,7 @@ internal class ImpassableFurnitureMod : Mod
     {
         instance = this;
         currentVersion =
-            VersionFromManifest.GetVersionFromModMetaData(
-                ModLister.GetActiveModWithIdentifier("Mlie.ImpassableFurniture"));
+            VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
 
     internal ImpassableSettings Settings
@@ -162,7 +161,7 @@ internal class ImpassableFurnitureMod : Mod
             rightSelectedDef = null;
             ImpassableFurniture.RemovePassability(Settings.enabledDefList);
             ImpassableFurniture.AddPassability(defaultList);
-            Settings.enabledDefList = new List<ThingDef>();
+            Settings.enabledDefList = [];
             foreach (var def in defaultList)
             {
                 Settings.enabledDefList.Add(def);
@@ -178,13 +177,15 @@ internal class ImpassableFurnitureMod : Mod
             ImpassableFurniture.RemovePassability(leftSelectedDef);
         }
 
-        if (Widgets.ButtonImage(rect3.BottomPart(0.3f).TopPart(0.17f).RightPart(0.525f).LeftPart(0.1f),
+        if (!Widgets.ButtonImage(rect3.BottomPart(0.3f).TopPart(0.17f).RightPart(0.525f).LeftPart(0.1f),
                 TexUI.ArrowTexLeft, Color.red))
         {
-            rightSelectedDef = null;
-            ImpassableFurniture.RemovePassability(Settings.enabledDefList);
-            Settings.enabledDefList = new List<ThingDef>();
+            return;
         }
+
+        rightSelectedDef = null;
+        ImpassableFurniture.RemovePassability(Settings.enabledDefList);
+        Settings.enabledDefList = [];
     }
 
     public override string SettingsCategory()
