@@ -6,12 +6,12 @@ namespace ImpassableFurniture;
 
 internal class ImpassableSettings : ModSettings
 {
-    public List<ThingDef> enabledDefList = [];
+    public List<ThingDef> EnabledDefList = [];
 
     public override void ExposeData()
     {
         base.ExposeData();
-        var list = enabledDefList;
+        var list = EnabledDefList;
         List<string> list2;
         if (list == null)
         {
@@ -25,7 +25,7 @@ internal class ImpassableSettings : ModSettings
 
         var source = list2 ?? [];
         Scribe_Collections.Look(ref source, "enabledDefList");
-        enabledDefList = (from td in source.Select(DefDatabase<ThingDef>.GetNamedSilentFail)
+        EnabledDefList = (from td in source.Select(DefDatabase<ThingDef>.GetNamedSilentFail)
             where td != null && td.modContentPack?.PackageId != "kentington.saveourship2"
             select td).ToList();
     }

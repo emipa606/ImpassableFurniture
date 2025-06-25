@@ -70,7 +70,7 @@ internal class ImpassableFurnitureMod : Mod
             where td.building != null && !td.label.Contains("(building)") &&
                   td.passability != Traversability.Impassable &&
                   (td.defName.Contains(searchTerm) || td.label.Contains(searchTerm)) &&
-                  !Settings.enabledDefList.Contains(td) && td.modContentPack?.PackageId != "kentington.saveourship2"
+                  !Settings.EnabledDefList.Contains(td) && td.modContentPack?.PackageId != "kentington.saveourship2"
             orderby td.LabelCap.RawText ?? td.defName
             select td).ToList();
         var num = 3f;
@@ -105,10 +105,10 @@ internal class ImpassableFurnitureMod : Mod
         GUI.BeginGroup(rect6, GUI.skin.box);
         num = 6f;
         Widgets.BeginScrollView(rect6.AtZero(), ref rightScrollPosition,
-            new Rect(0f, 0f, rect6.width / 5f * 4f, Settings.enabledDefList.Count * 32f));
-        if (!Settings.enabledDefList.NullOrEmpty())
+            new Rect(0f, 0f, rect6.width / 5f * 4f, Settings.EnabledDefList.Count * 32f));
+        if (!Settings.EnabledDefList.NullOrEmpty())
         {
-            foreach (var thingDef2 in from def in Settings.enabledDefList
+            foreach (var thingDef2 in from def in Settings.EnabledDefList
                      where def.defName.Contains(searchTerm) || def.label.Contains(searchTerm)
                      select def)
             {
@@ -138,15 +138,15 @@ internal class ImpassableFurnitureMod : Mod
             ImpassableFurniture.AddPassability(list);
             foreach (var def in list)
             {
-                Settings.enabledDefList.Add(def);
+                Settings.EnabledDefList.Add(def);
             }
         }
 
         if (Widgets.ButtonImage(rect3.BottomPart(0.6f).TopPart(0.1f).RightPart(0.525f).LeftPart(0.1f),
                 TexUI.ArrowTexRight) && leftSelectedDef != null)
         {
-            Settings.enabledDefList.Add(leftSelectedDef);
-            Settings.enabledDefList = (from td in Settings.enabledDefList
+            Settings.EnabledDefList.Add(leftSelectedDef);
+            Settings.EnabledDefList = (from td in Settings.EnabledDefList
                 orderby td.LabelCap.RawText ?? td.defName
                 select td).ToList();
             rightSelectedDef = leftSelectedDef;
@@ -159,19 +159,19 @@ internal class ImpassableFurnitureMod : Mod
         {
             leftSelectedDef = null;
             rightSelectedDef = null;
-            ImpassableFurniture.RemovePassability(Settings.enabledDefList);
+            ImpassableFurniture.RemovePassability(Settings.EnabledDefList);
             ImpassableFurniture.AddPassability(defaultList);
-            Settings.enabledDefList = [];
+            Settings.EnabledDefList = [];
             foreach (var def in defaultList)
             {
-                Settings.enabledDefList.Add(def);
+                Settings.EnabledDefList.Add(def);
             }
         }
 
         if (Widgets.ButtonImage(rect3.BottomPart(0.4f).TopPart(0.15f).RightPart(0.525f).LeftPart(0.1f),
                 TexUI.ArrowTexLeft) && rightSelectedDef != null)
         {
-            Settings.enabledDefList.Remove(rightSelectedDef);
+            Settings.EnabledDefList.Remove(rightSelectedDef);
             leftSelectedDef = rightSelectedDef;
             rightSelectedDef = null;
             ImpassableFurniture.RemovePassability(leftSelectedDef);
@@ -184,8 +184,8 @@ internal class ImpassableFurnitureMod : Mod
         }
 
         rightSelectedDef = null;
-        ImpassableFurniture.RemovePassability(Settings.enabledDefList);
-        Settings.enabledDefList = [];
+        ImpassableFurniture.RemovePassability(Settings.EnabledDefList);
+        Settings.EnabledDefList = [];
     }
 
     public override string SettingsCategory()

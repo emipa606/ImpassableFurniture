@@ -14,9 +14,9 @@ internal static class ImpassableFurniture
                   td.modContentPack?.PackageId != "kentington.saveourship2"
             select td).ToList();
 
-        if (ImpassableFurnitureMod.instance.Settings.enabledDefList.NullOrEmpty())
+        if (ImpassableFurnitureMod.instance.Settings.EnabledDefList.NullOrEmpty())
         {
-            ImpassableFurnitureMod.instance.Settings.enabledDefList =
+            ImpassableFurnitureMod.instance.Settings.EnabledDefList =
                 (from td in DefDatabase<ThingDef>.AllDefsListForReading
                     where td.building != null && td.passability == Traversability.Impassable &&
                           td.modContentPack?.PackageId != "kentington.saveourship2"
@@ -32,13 +32,13 @@ internal static class ImpassableFurniture
                 RemovePassability(td);
             }
         });
-        ImpassableFurnitureMod.instance.Settings.enabledDefList.ForEach(AddPassability);
+        ImpassableFurnitureMod.instance.Settings.EnabledDefList.ForEach(AddPassability);
     }
 
     public static void AddPassability(ThingDef def)
     {
         def.passability = Traversability.Impassable;
-        Regenerate();
+        regenerate();
     }
 
     public static void AddPassability(List<ThingDef> defList)
@@ -48,7 +48,7 @@ internal static class ImpassableFurniture
             def.passability = Traversability.Impassable;
         }
 
-        Regenerate();
+        regenerate();
     }
 
     public static void RemovePassability(ThingDef def)
@@ -59,7 +59,7 @@ internal static class ImpassableFurniture
         }
 
         def.passability = Traversability.PassThroughOnly;
-        Regenerate();
+        regenerate();
     }
 
     public static void RemovePassability(List<ThingDef> defList)
@@ -74,10 +74,10 @@ internal static class ImpassableFurniture
             def.passability = Traversability.PassThroughOnly;
         }
 
-        Regenerate();
+        regenerate();
     }
 
-    private static void Regenerate()
+    private static void regenerate()
     {
         if (Current.ProgramState != ProgramState.Playing)
         {
