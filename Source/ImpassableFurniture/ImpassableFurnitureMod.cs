@@ -25,8 +25,6 @@ internal class ImpassableFurnitureMod : Mod
 
     private string searchTerm = "";
 
-    private ImpassableSettings settings;
-
     public ImpassableFurnitureMod(ModContentPack content) : base(content)
     {
         instance = this;
@@ -39,20 +37,19 @@ internal class ImpassableFurnitureMod : Mod
         get
         {
             ImpassableSettings result;
-            if ((result = settings) == null)
+            if ((result = field) == null)
             {
-                result = settings = GetSettings<ImpassableSettings>();
+                result = field = GetSettings<ImpassableSettings>();
             }
 
             return result;
         }
-        set => settings = value;
+        set;
     }
 
     public override void DoSettingsWindowContents(Rect inRect)
     {
         base.DoSettingsWindowContents(inRect);
-        //Text.Font = GameFont.Medium;
         var rect = inRect.TopPart(0.05f);
         searchTerm = Widgets.TextField(rect.RightPart(0.95f).LeftPart(0.4f), searchTerm);
         if (currentVersion != null)
